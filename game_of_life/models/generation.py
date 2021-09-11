@@ -27,4 +27,4 @@ class Generation:
         self._events = []
 
     def notify_next_state(self, next_state_event: NextStateCellEvent):
-        self.events.append(next_state_event)
+        self._events.append(next_state_event)

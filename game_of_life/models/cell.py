@@ -23,15 +23,3 @@ class Cell:
     @has_life.setter
     def has_life(self, value: bool):
         self._has_life = value
-
-    # def unpopulated(self):
-    #     if self._has_life:
-    #         CellWillDieEvent(self)
-    #     else:
-    #         raise PopulatingError(self, PopulatingErrorTypes.ALREDY_UNPOPULATED)
-
-    # def populated(self):
-    #     if not self._has_life:
-    #         CellWillLiveEvent(self)
-    #     else:
-    #         raise PopulatingError(self, PopulatingErrorTypes.ALREADY_POPULATED)

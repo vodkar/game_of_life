@@ -49,6 +49,12 @@ class Grid(ABC):
             list[Cell]: [description]
         """
 
+    def iterate_over_grid(self):
+        return iter((k, n) for k in range(self._size[0]) for n in range(self._size[1]))
+
+    def __iter__(self):
+        return iter(x for row in self._grid for x in row)
+
 
 class CycledGrid(Grid):
     def _mod_get_cell(self, k, n):
