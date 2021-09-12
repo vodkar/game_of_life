@@ -8,7 +8,7 @@ from .cell_event import NextStateCellEvent
 
 
 class Generation:
-    """Generation entity class. Realize main logic of generations."""
+    """Generation entity class. Realize main logic of generations. Works like event storage"""
 
     _generation: int
     _events: list[NextStateCellEvent]

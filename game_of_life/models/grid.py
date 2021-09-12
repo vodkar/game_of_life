@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
+from __future__ import annotations
 
 """Grid of game life class file"""
 
 __author__ = "vodkar"
 
-from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from inject import params
@@ -55,21 +55,33 @@ class Grid(ABC):
     def __iter__(self):
         return iter(x for row in self._grid for x in row)
 
+    def __eq__(self, o: Grid) -> bool:
+        return self._grid == o._grid
+
 
 class CycledGrid(Grid):
     def _mod_get_cell(self, k, n):
-        return self._grid[k % self._size[0], n % self._size[1]]
+        return self._grid[k % self._size[0]][n % self._size[1]]
 
-    def get_neighborhoods(self, k, n) -> list[Cell]:
+    def get_neighborhoods(self, k: int, n: int) -> tuple[list[Cell], int]:
+        """Get neighborhoods cells and count of live cells
+
+        Args:
+            k (int): row
+            n (int): column
+
+        Returns:
+            tuple[list[Cell], int]: neighborhoods cells and count of live cells
+        """
         up, down, left, right = k - 1, k + 1, n - 1, n + 1
-        return [
+        neighs = [
             self._mod_get_cell(up, left),
             self._mod_get_cell(up, n),
             self._mod_get_cell(up, right),
             self._mod_get_cell(k, left),
-            self._mod_get_cell(k, n),
             self._mod_get_cell(k, right),
             self._mod_get_cell(down, left),
             self._mod_get_cell(down, n),
             self._mod_get_cell(down, right),
         ]
+        return neighs, sum(cell.has_life for cell in neighs)

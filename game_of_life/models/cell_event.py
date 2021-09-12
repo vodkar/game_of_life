@@ -7,6 +7,7 @@ __author__ = "vodkar"
 from abc import ABC, abstractproperty
 from .cell import Cell
 
+
 class NextStateCellEvent(ABC):
     cell: Cell
 
@@ -25,10 +26,12 @@ class NextStateCellEvent(ABC):
 
 
 class CellWillLiveEvent(NextStateCellEvent):
+    @property
     def has_life(self) -> bool:
         return True
 
 
 class CellWillDieEvent(NextStateCellEvent):
+    @property
     def has_life(self):
         return False

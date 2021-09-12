@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import annotations
 
 """Life cell entity file"""
 
@@ -23,3 +24,6 @@ class Cell:
     @has_life.setter
     def has_life(self, value: bool):
         self._has_life = value
+
+    def __eq__(self, o: Cell):
+        return self._has_life == o._has_life
