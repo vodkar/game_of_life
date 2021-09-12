@@ -56,7 +56,7 @@ class Grid(ABC):
         return iter(x for row in self._grid for x in row)
 
     def __eq__(self, o: Grid) -> bool:
-        return self._grid == o._grid
+        return self._size == o._size and self._grid == o._grid
 
     @property
     def grid(self):

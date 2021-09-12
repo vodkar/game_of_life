@@ -21,6 +21,15 @@ class TestBlockPatternLife(unittest.TestCase):
 
         assert all(test_pattern([block_grid, deepcopy(block_grid), deepcopy(block_grid)]))
 
+    def test_blinker_pattern(self):
+        blinker_grid = CycledGrid((5, 5), {(2, 1), (2, 2), (2, 3)})
+
+        assert all(
+            test_pattern(
+                [blinker_grid, CycledGrid((5, 5), {(1, 2), (2, 2), (3, 2)}), deepcopy(blinker_grid)]
+            )
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
