@@ -30,7 +30,7 @@ class ConsoleGridDrawer(IGridDrawer):
         for row in grid.grid:
             for cell in row:
                 if cell.has_life:
-                    print(self._live_cell)
+                    print(self._live_cell, end="")
                 else:
-                    print(self._dead_cell)
+                    print(self._dead_cell, end="")
             print("\n")

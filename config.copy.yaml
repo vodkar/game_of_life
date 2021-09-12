@@ -11,3 +11,4 @@ LifeConfig:
     - width: 2
       height: 2
   drawer: console
+  delay: 1
