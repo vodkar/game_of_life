@@ -58,6 +58,10 @@ class Grid(ABC):
     def __eq__(self, o: Grid) -> bool:
         return self._grid == o._grid
 
+    @property
+    def grid(self):
+        return self._grid
+
 
 class CycledGrid(Grid):
     def _mod_get_cell(self, k, n):
